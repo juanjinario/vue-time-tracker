@@ -1,0 +1,20 @@
+@import "./vars.scss";
+@import "./base.scss";
+@import "./form.scss";
+
+body {
+  background: $background-body;
+  font-family: $font-primary;
+  font-size: $font-size;
+  color: $color-font;
+}
+
+.page-container {
+  margin: 0 auto;
+  max-width: $width-screen;
+  width: 100%;
+}
+
+.page-content {
+  padding: 1.5rem;
+}

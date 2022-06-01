@@ -1,0 +1,47 @@
+@import "./vars.scss";
+
+// Example
+input {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 1rem;
+    outline: 0;
+    padding: 0.25rem 1.25rem;
+    transition: border-color .15s ease-in-out;
+    &:focus {
+        border: 1px solid $color-primary-500;
+    }
+    &::placeholder {
+        font-style: italic;
+    }
+}
+
+.btn-raised-primary,
+.btn-raised-accent {
+    border: 0;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.45rem 1.5rem;
+    transition: all .225s ease-in-out;
+    &:disabled {
+        cursor: auto;
+        opacity: 0.5;
+    }
+}
+
+.btn-raised-primary {
+    background: $color-primary-500;
+    color: #fff;
+    &:hover {
+        background: $color-primary-900;
+    }
+}
+
+.btn-raised-accent {
+    background: $color-accent-500;
+    color: #fff;
+    &:hover {
+        background: $color-accent-900;
+    }
+}
