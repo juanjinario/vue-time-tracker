@@ -1,10 +1,12 @@
 <template>
     <div class="user-bar">
         <button v-if="workStatus === 'offline'" class="btn-raised-primary" @click="onClockIn">Entrar</button>
-        <div v-else>
+        <div v-if="workStatus === 'online'">
             <button class="btn-raised" @click="onClockPause">Pausa</button>
             <button class="btn-raised-accent" @click="onClockOut">Salir</button>
         </div>
+        <span class="separator">|</span>
+        <UserMenu :workStatus="workStatus"  />
     </div>
     <pre>
         {{ workStatus }}
@@ -13,8 +15,10 @@
 
 <script>
 import { addWorkEntryIn, addWorkEntryOut, getWorkStatus } from "@/core/services/work-entries.service";
+import UserMenu from '@/shared/components/UserMenu/UserMenu.vue';
 
 export default {
+    components: { UserMenu },
     data() {
         return {
             location: {

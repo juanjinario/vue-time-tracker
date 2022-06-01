@@ -1,3 +1,5 @@
+@import "@/assets/css/vars.scss";
+
 .user-bar {
     align-items: center;
     background: #E7E7E7;
@@ -10,5 +12,12 @@
         & + button {
             margin-left: 5px;
         }
+    }
+    .separator {
+        color: $color-shadow-500;
+        display: inline-block;
+        font-size: 1.3rem;
+        line-height: 1.3rem;
+        margin: -2px 1rem 0;
     }
 }
