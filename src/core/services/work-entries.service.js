@@ -15,6 +15,30 @@ export const getWorkStatus = async ({ userId }) => {
     return user;
 }
 
+export const addWorkEntryIn = async ({ currentWorkStatus, location }) => {
+    const employeeId = currentWorkStatus.employee.id;
+    const workInInfo = {
+        employeeId,
+        workEntryIn: {
+            coordinates: location
+        }
+    }
+    const { data: workStatus } = (await workEntriesApi.post('/clock-in', workInInfo)).data;
+    return workStatus;
+}
+
+export const addWorkEntryOut = async ({ currentWorkStatus, location }) => {
+    const employeeId = currentWorkStatus.employee.id;
+    const workOutInfo = {
+        employeeId,
+        workEntryIn: {
+            coordinates: location
+        }
+    }
+    const { data: workStatus } = (await workEntriesApi.post('/clock-out', workOutInfo)).data;
+    return workStatus;
+}
+
 const getUserById = ({ id, list }) => {
     return list.find(user => user.id === id);
 }
