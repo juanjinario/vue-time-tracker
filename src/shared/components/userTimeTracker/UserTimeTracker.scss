@@ -7,11 +7,17 @@
     display: flex;
     float: right;
     margin: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     button {
+        min-width: 110px;
+        width: auto;
         & + button {
-            margin-left: 5px;
+            margin-left: 10px;
         }
+    }
+    .time {
+        font-size: 0.75rem;
+        margin-right: 1.5rem;
     }
     .separator {
         color: $color-shadow-500;

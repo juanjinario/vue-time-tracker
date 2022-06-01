@@ -13,6 +13,7 @@ export default class DateUtils {
         return hours + ':' + minutes + ':' + seconds;
     }
 
+    // Difference is in miliseconds
     static getTimeDifference({ date1, date2 }) { 
         return new Date(date1).getTime() - new Date(date2).getTime();
     }
