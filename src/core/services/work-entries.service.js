@@ -23,8 +23,8 @@ export const addWorkEntryIn = async ({ currentWorkInfo, location }) => {
             coordinates: location
         }
     }
-    const { data: workStatus } = (await workEntriesApi.post('/clock-in', workInInfo)).data;
-    return workStatus;
+    const { data: userWorkInfo } = (await workEntriesApi.post('/clock-in', workInInfo)).data;
+    return userWorkInfo;
 }
 
 export const addWorkEntryOut = async ({ currentWorkInfo, location }) => {
@@ -35,8 +35,8 @@ export const addWorkEntryOut = async ({ currentWorkInfo, location }) => {
             coordinates: location
         }
     }
-    const { data: workStatus } = (await workEntriesApi.post('/clock-out', workOutInfo)).data;
-    return workStatus;
+    const { data: userWorkInfo } = (await workEntriesApi.post('/clock-out', workOutInfo)).data;
+    return userWorkInfo;
 }
 
 const getUserById = ({ id, list }) => {
