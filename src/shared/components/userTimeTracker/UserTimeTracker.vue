@@ -1,7 +1,7 @@
 <template>
     <div class="user-bar">
-        <button class="btn-raised-primary" @click="onClockIn">Entrar</button>
-        <div>
+        <button v-if="workStatus === 'offline'" class="btn-raised-primary" @click="onClockIn">Entrar</button>
+        <div v-else>
             <button class="btn-raised" @click="onClockPause">Pausa</button>
             <button class="btn-raised-accent" @click="onClockOut">Salir</button>
         </div>
@@ -23,22 +23,20 @@ export default {
             },
             // userId would come from auth service
             userId: '00371793-00ff-4ad9-86cc-41bf35b87ed0',
+            userWorkInfo: null,
             workStatus: null,
         }
     },
     name: 'UserTimeTracker',
     methods: {
         async getWorkStatusFromApi({ userId }) {
-            this.workStatus = await getWorkStatus({ userId });
-            console.log(this.workStatus);
+            this.userWorkInfo = await getWorkStatus({ userId });
         },
         async onClockIn() {
-            this.workStatus = await addWorkEntryIn({ location: this.location, currentWorkStatus: this.workStatus });
-            console.log(this.workStatus);
+            this.userWorkInfo = await addWorkEntryIn({ location: this.location, currentWorkInfo: this.userWorkInfo });
         },
         async onClockOut() {
-            this.workStatus = await addWorkEntryOut({ location: this.location, currentWorkStatus: this.workStatus });
-            console.log(this.workStatus);
+            this.userWorkInfo = await addWorkEntryOut({ location: this.location, currentWorkInfo: this.userWorkInfo });
         },
         async onClockPause() {
             // Todo Stuff
@@ -46,6 +44,12 @@ export default {
     },
     mounted() {
         this.getWorkStatusFromApi({ userId: this.userId });
+    },
+    watch: {
+        userWorkInfo(value, oldValue) {
+            if (!value) return;
+            this.workStatus = value.employee.workStatus;
+        }
     }
 }
 </script>
