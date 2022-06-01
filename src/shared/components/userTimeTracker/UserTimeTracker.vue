@@ -28,10 +28,13 @@ export default {
                 latitude:  39.77,
                 longitude: -0.40
             },
+            stopWatch: undefined,
             // userId would come from auth service
             userId: '00371793-00ff-4ad9-86cc-41bf35b87ed0',
             userWorkInfo: null,
             workStatus: null,
+            // Time in miliseconds
+            workingTime: 0  
         }
     },
     name: 'UserTimeTracker',
@@ -43,21 +46,30 @@ export default {
             this.userWorkInfo = await addWorkEntryIn({ location: this.location, currentWorkInfo: this.userWorkInfo });
         },
         async onClockOut() {
+            clearInterval(this.stopWatch);
+            this.stopWatch = undefined;
             this.userWorkInfo = await addWorkEntryOut({ location: this.location, currentWorkInfo: this.userWorkInfo });
         },
         async onClockPause() {
             // Todo Stuff
+            console.log('onClockPause');
+        },
+        startStopwatch() {
+            this.stopWatch = setInterval(() => {
+                this.workingTime += 1000;
+                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
+            }, 1000)
         },
         calculateTime() {
             if (this.workStatus == 'online') {
-                console.log('online');
+                this.startStopwatch();
             }
             if (this.workStatus == 'offline') {
                 const { workEntryIn, workEntryOut } = this.userWorkInfo;
-                const differenceTime = DateUtils.getTimeDifference({ date1: workEntryOut.date, date2: workEntryIn.date });
-                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: differenceTime });
+                this.workingTime = DateUtils.getTimeDifference({ date1: workEntryOut.date, date2: workEntryIn.date });
+                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
             }
-        }
+        },
     },
     mounted() {
         this.getWorkStatusFromApi({ userId: this.userId });
