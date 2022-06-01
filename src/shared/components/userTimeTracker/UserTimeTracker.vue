@@ -54,12 +54,6 @@ export default {
             // Todo Stuff
             console.log('onClockPause');
         },
-        startStopwatch() {
-            this.stopWatch = setInterval(() => {
-                this.workingTime += 1000;
-                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
-            }, 1000)
-        },
         calculateTime() {
             if (this.workStatus == 'online') {
                 this.startStopwatch();
@@ -69,6 +63,14 @@ export default {
                 this.workingTime = DateUtils.getTimeDifference({ date1: workEntryOut.date, date2: workEntryIn.date });
                 this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
             }
+        },
+        startStopwatch() {
+            this.workingTime = 0;
+            this.formatedTime = '00:00:00';
+            this.stopWatch = setInterval(() => {
+                this.workingTime += 1000;
+                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
+            }, 1000)
         },
     },
     mounted() {
