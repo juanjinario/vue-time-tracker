@@ -1,8 +1,14 @@
 <template>
     <div class="user-bar">
         <button class="btn-raised-primary" @click="onClockIn">Entrar</button>
-        <button class="btn-raised-accent" @click="onClockOut">Salir</button>
+        <div>
+            <button class="btn-raised" @click="onClockPause">Pausa</button>
+            <button class="btn-raised-accent" @click="onClockOut">Salir</button>
+        </div>
     </div>
+    <pre>
+        {{ workStatus }}
+    </pre>
 </template>
 
 <script>
@@ -33,6 +39,9 @@ export default {
         async onClockOut() {
             this.workStatus = await addWorkEntryOut({ location: this.location, currentWorkStatus: this.workStatus });
             console.log(this.workStatus);
+        },
+        async onClockPause() {
+            // Todo Stuff
         },
     },
     mounted() {

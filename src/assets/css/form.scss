@@ -16,8 +16,9 @@ input {
     }
 }
 
-.btn-raised-primary,
-.btn-raised-accent {
+.btn-raised,
+.btn-raised-accent,
+.btn-raised-primary {
     border: 0;
     border-radius: 1rem;
     cursor: pointer;
@@ -30,11 +31,11 @@ input {
     }
 }
 
-.btn-raised-primary {
-    background: $color-primary-500;
+.btn-raised {
+    background: $color-shadow-500;
     color: #fff;
     &:hover {
-        background: $color-primary-900;
+        background: $color-shadow-900;
     }
 }
 
@@ -43,5 +44,13 @@ input {
     color: #fff;
     &:hover {
         background: $color-accent-900;
+    }
+}
+
+.btn-raised-primary {
+    background: $color-primary-500;
+    color: #fff;
+    &:hover {
+        background: $color-primary-900;
     }
 }
