@@ -1,16 +1,14 @@
 <template>
-  <button class="btn-raised-primary">Entrar</button>
-  <button class="btn-raised-primary">Salir</button>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <user-time-tracker />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UserTimeTracker from './shared/components/userTimeTracker/UserTimeTracker.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    UserTimeTracker
   }
 }
 </script>
