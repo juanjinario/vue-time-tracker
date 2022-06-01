@@ -1,6 +1,6 @@
 <template>
     <div class="user-tracker-bar">
-        <span class="time">{{ formatedTime }}</span>
+        <span class="time">{{ formatedWorkingTime }}</span>
         <button v-if="workStatus === 'offline'" class="btn-raised-primary" @click="onClockIn">Entrar</button>
         <div v-if="workStatus === 'online'">
             <button class="btn-raised" @click="onClockPause">Pausa</button>
@@ -21,9 +21,13 @@ import DateUtils from '@/shared/utils/dateUtils';
 
 export default {
     components: { UserMenu },
+    computed: {
+        formatedWorkingTime() {
+            return DateUtils.getFormatedTime({ timeNumber: this.workingTime });
+        },
+    },
     data() {
         return {
-            formatedTime: '00:00:00',
             location: {
                 latitude:  39.77,
                 longitude: -0.40
@@ -61,15 +65,12 @@ export default {
             if (this.workStatus == 'offline') {
                 const { workEntryIn, workEntryOut } = this.userWorkInfo;
                 this.workingTime = DateUtils.getTimeDifference({ date1: workEntryOut.date, date2: workEntryIn.date });
-                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
             }
         },
         startStopwatch() {
             this.workingTime = 0;
-            this.formatedTime = '00:00:00';
             this.stopWatch = setInterval(() => {
                 this.workingTime += 1000;
-                this.formatedTime = DateUtils.getFormatedTime({ timeNumber: this.workingTime });
             }, 1000)
         },
     },
