@@ -16,12 +16,12 @@ export default {
         }
     },
     methods: {
-        async mixPokemonArray() {
-            console.log('webo');
+        async testInitPageFunction() {
+            // To do stuff
         },
     },
     mounted() {
-        this.mixPokemonArray()
+        this.testInitPageFunction()
     }
 
 }
