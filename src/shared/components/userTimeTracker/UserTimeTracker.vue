@@ -1,5 +1,5 @@
 <template>
-    <div class="user-bar">
+    <div class="user-tracker-bar">
         <button v-if="workStatus === 'offline'" class="btn-raised-primary" @click="onClockIn">Entrar</button>
         <div v-if="workStatus === 'online'">
             <button class="btn-raised" @click="onClockPause">Pausa</button>
