@@ -15,8 +15,8 @@ export const getWorkStatus = async ({ userId }) => {
     return user;
 }
 
-export const addWorkEntryIn = async ({ currentWorkStatus, location }) => {
-    const employeeId = currentWorkStatus.employee.id;
+export const addWorkEntryIn = async ({ currentWorkInfo, location }) => {
+    const employeeId = currentWorkInfo.employee.id;
     const workInInfo = {
         employeeId,
         workEntryIn: {
@@ -27,8 +27,8 @@ export const addWorkEntryIn = async ({ currentWorkStatus, location }) => {
     return workStatus;
 }
 
-export const addWorkEntryOut = async ({ currentWorkStatus, location }) => {
-    const employeeId = currentWorkStatus.employee.id;
+export const addWorkEntryOut = async ({ currentWorkInfo, location }) => {
+    const employeeId = currentWorkInfo.employee.id;
     const workOutInfo = {
         employeeId,
         workEntryIn: {
