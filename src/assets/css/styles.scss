@@ -12,15 +12,26 @@ body {
 .page-header {
   align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: space-between;
   padding: 1.5rem;
+  @media (min-width: $mobile-screen) {
+    flex-direction: row;
+  }
   h1, h2, h3 {
+    align-self: flex-start;
     background: $background-page-title;
     background-repeat: no-repeat;
     background-size: 100% 46%;
     background-position: 0 124%;
     line-height: 2.5rem;
     margin: 0;
+  }
+  .user-tracker-bar {
+    @media (min-width: $mobile-screen) {
+      order: 1;
+    }
   }
 }
 

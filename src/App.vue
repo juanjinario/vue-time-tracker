@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
-    <h1>Page title</h1>
     <UserTimeTracker />
+    <h1>Page title</h1>
   </div>
   <div class="page-content">
       <HomePage />
