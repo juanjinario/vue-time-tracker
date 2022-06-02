@@ -1,6 +1,11 @@
 <template>
-  <UserTimeTracker />
-  <HomePage />
+  <div class="page-header">
+    <h1>Page title</h1>
+    <UserTimeTracker />
+  </div>
+  <div class="page-content">
+      <HomePage />
+  </div>
 </template>
 
 <script>

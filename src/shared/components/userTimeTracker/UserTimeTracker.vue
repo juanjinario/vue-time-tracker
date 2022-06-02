@@ -9,9 +9,6 @@
         <span class="separator">|</span>
         <UserMenu :workStatus="workStatus"  />
     </div>
-    <pre>
-        {{ workStatus }}
-    </pre>
 </template>
 
 <script>
