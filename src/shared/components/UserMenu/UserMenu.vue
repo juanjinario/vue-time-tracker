@@ -3,7 +3,23 @@
     <div class="profile-picture-wrapper" :class="{ online: workStatus === 'online', offline: workStatus === 'offline' }">
         <img class="profile-picture" :src="user.imageProfileUrl" />
     </div>
-    <span class="name">{{ user.firstName }} {{ user.lastName }}</span>
+    <ul class="nav">
+        <li class="menu-item">
+            <a href="">{{ user.firstName }} {{ user.lastName }}</a>
+            <ul class="submenu">
+                <li>
+                    <a href="">Mis cuentas</a>
+                    <ul class="submenu">
+                        <li><a href="">Sesame 1</a></li>
+                        <li><a href="">Sesame 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Vista empleado</a></li>
+                <li><a href="">Mi perfil</a></li>
+                <li><a href="">Cerrar Sesión</a></li>
+		    </ul>
+        </li>
+    </ul>
   </div>
 </template>
 

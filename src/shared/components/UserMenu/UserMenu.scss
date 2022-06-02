@@ -1,5 +1,7 @@
 @import "@/assets/css/vars.scss";
 
+$size-menu: 200px;
+
 .user-menu {
     align-items: center;
     display: flex;
@@ -35,7 +37,58 @@
             width: 24px;
         }
     }
-    .name {
-        font-weight: bold;
+    .nav {
+        list-style-type: none;
+        margin: 0;
+        .menu-item {
+            position: relative;
+            &:hover {
+                > .submenu {
+                    display: block;
+                }
+            }
+            > a {
+                color: $color-font;
+                font-weight: bold;
+            }
+            > .submenu {
+                right: 0;
+            }
+            .submenu {
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 15px -3px, rgba(0, 0, 0, 0.04) 0px 4px 6px -2px;
+                display:none;
+                list-style-type: none;
+                padding: 0;
+                position:absolute;
+                transition: all 0.200s;
+                width: $size-menu;
+                li {
+                    border-bottom: 1px solid #E7E7E7;
+                    position: relative;
+                    text-align: center;
+                    &:hover {
+                        background-color: $color-primary-100;
+                        > .submenu {
+                            display: block;
+                        }
+                    }
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                    a {
+                        color: $color-menu-link;
+                        display: block;
+                        font-size: 0.75rem;
+                        padding: 0.75rem;
+                    }
+                    .submenu {
+                        left: -$size-menu;
+				        top: 0px;
+                    }
+                }
+            }
+        }
     }
 }
