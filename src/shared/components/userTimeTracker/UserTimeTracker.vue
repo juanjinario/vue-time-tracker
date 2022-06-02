@@ -2,8 +2,8 @@
     <div class="user-tracker-bar">
         <span class="time">{{ formatedWorkingTime }}</span>
         <button v-if="workStatus === 'offline'" class="btn-raised-primary" @click="onClockIn">Entrar</button>
-        <div v-if="workStatus === 'online'">
-            <button class="btn-raised" @click="onClockPause">Pausa</button>
+        <div v-if="workStatus === 'online' || workStatus === 'paused'">
+            <button class="btn-raised" @click="onClockPause">{{ pauseButtonText }}</button>
             <button class="btn-raised-accent" @click="onClockOut">Salir</button>
         </div>
         <span class="separator">|</span>
@@ -25,6 +25,9 @@ export default {
         formatedWorkingTime() {
             return DateUtils.getFormatedTime({ timeNumber: this.workingTime });
         },
+        pauseButtonText() {
+            return this.workStatus === 'online' ? 'Pausa' : 'Continuar';
+        }
     },
     data() {
         return {
@@ -55,8 +58,10 @@ export default {
             this.userWorkInfo = await addWorkEntryOut({ location: this.location, currentWorkInfo: this.userWorkInfo });
         },
         async onClockPause() {
-            // Todo Stuff
-            console.log('onClockPause');
+            clearInterval(this.stopWatch);
+            this.stopWatch = undefined;
+            this.workStatus = 'paused';
+            // Todo: Add request to pause session to api
         },
         calculateTime() {
             if (this.workStatus == 'online') {
