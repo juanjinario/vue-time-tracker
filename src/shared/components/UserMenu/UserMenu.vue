@@ -5,10 +5,16 @@
     </div>
     <ul class="nav">
         <li class="menu-item">
-            <a href="">{{ user.firstName }} {{ user.lastName }}</a>
+            <a href="">
+                {{ user.firstName }} {{ user.lastName }}
+                <i className="icon fa-solid fa-angle-down"></i> 
+            </a>
             <ul class="submenu">
                 <li>
-                    <a href="">Mis cuentas</a>
+                    <a href="">
+                        <i className="icon fa-solid fa-angle-left"></i>
+                        Mis cuentas
+                    </a>
                     <ul class="submenu">
                         <li><a href="">Sesame 1</a></li>
                         <li><a href="">Sesame 2</a></li>
