@@ -50,7 +50,11 @@ $size-menu: 200px;
             }
             > a {
                 color: $color-font;
+                font-size: 0.8rem;
                 font-weight: bold;
+                @media (min-width: $mobile-screen) {
+                    font-size: 1rem;
+                }
                 .icon {
                     font-size: 0.8rem;
                     margin-left: 0.5rem;

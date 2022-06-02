@@ -7,8 +7,10 @@
     display: flex;
     padding: 0.5rem 1.5rem;
     button {
-        min-width: 110px;
         width: auto;
+        @media (min-width: $mobile-screen) {
+            min-width: 110px;
+        }
         & + button {
             margin-left: 10px;
         }
