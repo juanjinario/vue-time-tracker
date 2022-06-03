@@ -45,9 +45,11 @@ export default {
     methods: {
         async getWorkStatusFromApi({ userId }) {
             this.userWorkInfo = await getWorkStatus({ userId });
+            this.initWorkingTime();
         },
         async onClockIn() {
             this.userWorkInfo = await addWorkEntryIn({ location: this.location, currentWorkInfo: this.userWorkInfo });
+            this.resetTime();
         },
         async onClockOut() {
             clearInterval(this.stopWatch);
@@ -60,6 +62,15 @@ export default {
             this.workStatus = 'paused';
             // Todo: Add request to pause session to api
         },
+        initWorkingTime() {
+            this.workStatus = this.userWorkInfo.employee.workStatus;
+            if (this.workStatus === 'online') {
+                let currentDate = new Date();
+                const { workEntryIn } = this.userWorkInfo;
+                // Todo: api do not give a realistic workEntryIn date for calculate the working time when workStatus is online
+                // this.workingTime = DateUtils.getTimeDifference({ date1: currentDate, date2: workEntryIn.date });
+            }
+        },
         calculateTime() {
             if (this.workStatus == 'online') {
                 this.startStopwatch();
@@ -70,11 +81,13 @@ export default {
             }
         },
         startStopwatch() {
-            this.workingTime = 0;
             this.stopWatch = setInterval(() => {
                 this.workingTime += 1000;
             }, 1000)
         },
+        resetTime() {
+            this.workingTime = 0;
+        }
     },
     mounted() {
         this.getWorkStatusFromApi({ userId: this.userId });

@@ -8,10 +8,6 @@ export default {
     components: { },
     data() {
         return {
-            pokemonArr: [],
-            pokemon: null,
-            showPokemon: false,
-            showAnswer: false,
             message: ''
         }
     },
