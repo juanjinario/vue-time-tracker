@@ -1,6 +1,6 @@
 export default class DateUtils {
 
-    static getFormatedTime({ timeNumber }) {
+    static getFormatedTime({ timeNumber = 0 }) {
         var sec_num = timeNumber / 1000;
         var hours   = Math.floor(sec_num / 3600);
         var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
