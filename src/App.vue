@@ -4,22 +4,21 @@
     <h1>Page title</h1>
   </div>
   <div class="page-content">
-      <HomePage />
+    <HomePage />
   </div>
 </template>
 
 <script>
-import UserTimeTracker from '@/shared/components/UserTimeTracker/UserTimeTracker.vue';
-import HomePage from '@/pages/Home/Home.vue';
+import UserTimeTracker from "@/shared/components/UserTimeTracker/UserTimeTracker.vue";
+import HomePage from "@/pages/Home/Home.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     UserTimeTracker,
-    HomePage
-  }
-}
+    HomePage,
+  },
+};
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
